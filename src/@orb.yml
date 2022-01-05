@@ -1,0 +1,8 @@
+version: 2.1
+
+description: >
+  Install and configure the PipeCD CLI (pipectl CLI).
+
+display:
+  home_url: "https://pipecd.dev"
+  source_url: "https://github.com/pipe-cd/orb-pipecd"

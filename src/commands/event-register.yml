@@ -1,0 +1,46 @@
+description: Register an event that can be used by EventWatcher.
+
+parameters:
+  api-address:
+    type: env_var_name
+    default: PIPECD_API_ADDRESS
+    description: The address to control-plane api.
+
+  api-key:
+    type: env_var_name
+    default: PIPECD_API_KEY
+    description: The api key used while authenticating with control-plane.
+
+  event-name:
+    type: string
+    default: ''
+    description: The event name.
+
+  data:
+    type: string
+    default: ''
+    description: The event data.
+
+  labels:
+    type: string
+    default: ''
+    description: "The comma-separated list of labels for the event. Format: key=value,key2=value2."
+
+steps:
+  - run:
+      name: Register an Event
+      command: |
+        if [ -z "<<parameters.labels>>" ]; then
+          pipectl event register \
+            --api-key=$<<parameters.api-key>> \
+            --address=$<<parameters.api-address>> \
+            --name=<<parameters.event-name>> \
+            --data=<<parameters.data>>
+        else
+          pipectl event register \
+            --api-key=$<<parameters.api-key>> \
+            --address=$<<parameters.api-address>> \
+            --name=<<parameters.event-name>> \
+            --data=<<parameters.data>> \
+            --labels=<<parameters.labels>>
+        fi

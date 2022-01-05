@@ -1,0 +1,19 @@
+description: >
+  This is a simple executor for using pipectl.
+
+docker:
+  - image: gcr.io/pipecd/pipectl:<<parameters.tag>>
+
+resource_class: <<parameters.resource_class>>
+
+parameters:
+  tag:
+    default: "v0.23.0"
+    description: >
+      Pick a specific pipecd/pipectl image variant:
+      https://github.com/pipe-cd/pipe/releases
+    type: string
+
+  resource_class:
+    default: small
+    type: string

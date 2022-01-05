@@ -1,0 +1,20 @@
+description: Register an event that can be used by EventWatcher.
+
+usage:
+  version: 2.1
+
+  orbs:
+    pipecd: pipe-cd/pipecd@1.0.0
+
+  jobs:
+    register-event:
+      executor: pipecd/default
+      steps:
+        - pipecd/event-register:
+            name: example-image-pushed
+            data: gcr.io/pipecd/example:v0.1.0
+
+  workflows:
+    register_event:
+      jobs:
+        - register-event
