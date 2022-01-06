@@ -1,6 +1,16 @@
 description: Register an event that can be used by EventWatcher.
 
 parameters:
+  attach-workspace:
+    type: boolean
+    default: false
+    description: Boolean for whether or not to attach to an existing workspace. Default is false.
+
+  workspace-root:
+    type: string
+    default: .
+    description: Workspace root path that is either an absolute path or a path relative to the working directory. Defaults to '.' (the working directory).
+
   api-address:
     type: env_var_name
     default: PIPECD_API_ADDRESS
@@ -27,6 +37,11 @@ parameters:
     description: "The comma-separated list of labels for the event. Format: key=value,key2=value2."
 
 steps:
+  - when:
+      condition: <<parameters.attach-workspace>>
+      steps:
+        - attach_workspace:
+            at: <<parameters.workspace-root>>
   - run:
       name: Register an Event
       command: |
