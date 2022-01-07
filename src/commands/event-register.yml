@@ -23,12 +23,10 @@ parameters:
 
   event-name:
     type: string
-    default: ''
     description: The event name.
 
   data:
     type: string
-    default: ''
     description: The event data.
 
   labels:
