@@ -72,7 +72,7 @@ workflows:
           add-pr-comment: false
           fail-if-semver-not-indicated: true
           publish-version-tag: true
-          ssh-fingerprints: 16:ba:d2:80:20:18:af:bf:d4:62:6b:79:1c:65:00:00
+          ssh-fingerprints: ae:55:e3:45:d8:fb:1e:92:2b:5c:de:40:58:7e:ef:4c
           requires:
             - test
           filters:
