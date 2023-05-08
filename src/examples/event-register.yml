@@ -11,7 +11,7 @@ usage:
       executor: pipecd/default
       steps:
         - pipecd/event-register:
-            name: example-image-pushed
+            event-name: example-image-pushed
             data: gcr.io/pipecd/example:v0.1.0
 
   workflows:
